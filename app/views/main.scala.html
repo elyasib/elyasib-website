@@ -45,16 +45,15 @@
 				@content
 		</div>
 	</div>
-    <script type='text/javascript' src="@routes.Assets.versioned("javascripts/jsgrup.min.js")"></script>
-    <script type='text/javascript' src="@routes.Assets.versioned("javascripts/jsgrup.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.versioned("javascripts/jsmain.min.js")"></script>
 	<script>
 		$(document).ready(function() {
 			$(window).discrete_scroll();
 			toggleSideBar("#contactBtn","#contact","#signIn");
-			//toggleSideBar("#signInBtn","#signIn","#contact");
 			scrollToAnch1($("#arrow"));
 			closeSideBar("#sidebarClose","#contact","#logIn");
 			//formBehavior();
+			collapseMenuBar("#menuBar","#collMenuBar");
 		});
 	</script>
 	<script>

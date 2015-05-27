@@ -11,20 +11,27 @@ $(document).ready(function() {
 	var $doc = $(document);
 	var $menuBar = $("#menuBar");
 	var $body=$('body');
-	var currBox = 0;
+	var currBox = Math.floor($doc.scrollTop() / $(window).height());  //Gets the current box when the page is realoaded
 	var lastBox = 0;
 	var lastTarget="";
 	var scrollFinished=true;
 	var $htmlBody=$("html,body");
 	var $Box1=$(document.getElementById("box1"));
 	var $innBox1=$(document.getElementById("innbox1"));
+	console.log(currBox);
 
 	function switchClass(targetId,class1,class2) {
 		targetId.removeClass(class2);
 		targetId.addClass(class1);
 	}
 
-	switchClass($menuBar,"toggleColorTop","toggleColorNop");
+	//Initilizes the style of the top menu bar
+	;(function() {
+		if (currBox === 0)
+			switchClass($menuBar,"toggleColorTop","toggleColorNop");
+		else
+			switchClass($menuBar,"toggleColorNop","toggleColorTop");
+	})();
 
 	//function added to JQuery.fn to enable custom scrolling
 	;(function($) {
@@ -74,10 +81,12 @@ $(document).ready(function() {
 					if (currBox > 0) {
 						lastBox = currBox;
 						currBox--;
-						console.log("preparing");
-						$(document.getElementById("innbox"+currBox.toString())).addClass("willScroll");
-						console.log("scheduling");
-						setTimeout(function(){instance.scrollToBox();},50);
+						//"will-change" commented out provisionally, instead instance.scrollToBox() is called directly
+						//console.log("preparing");
+						//$(document.getElementById("innbox"+currBox.toString())).addClass("willScroll");
+						//console.log("scheduling");
+						//setTimeout(function(){instance.scrollToBox();},50);
+						instance.scrollToBox();
 					}
 					else {
 						lastTarget = "";
@@ -88,10 +97,12 @@ $(document).ready(function() {
 					if (currBox < 3) { //here should go the total number of preview blocks
 						lastBox = currBox;
 						currBox++;
-						console.log("preparing");
-						$(document.getElementById("innbox"+currBox.toString())).addClass("willScroll");
-						console.log("scheduling");
-						setTimeout(function(){instance.scrollToBox();},50);
+						//"will-change" commented out provisionally, instead instance.scrollToBox() is called directly
+						//console.log("preparing");
+						//$(document.getElementById("innbox"+currBox.toString())).addClass("willScroll");
+						//console.log("scheduling");
+						//setTimeout(function(){instance.scrollToBox();},50);
+						instance.scrollToBox();
 					}
 					else {
 						lastTarget = "";

@@ -26,12 +26,10 @@ libraryDependencies ++= Seq(
   //"org.scalatest" %% "scalatest" % "2.2.4" % "test"
 )
 
-//pipelineStages in Assets := Seq(concat,uglify,filter)
-
-pipelineStages in Assets := Seq(concat,filter)
+pipelineStages in Assets := Seq(uglify,concat,filter)
 
 Concat.groups := Seq(
-    "jsgrup.js" -> group(Seq("lib/jquery/jquery.min.js", "lib/jquery-ui/jquery-ui.min.js", "lib/bootstrap/js/bootstrap.min.js", "javascripts/main.js"))
+    "jsmain.min.js" -> group(Seq("lib/jquery/jquery.min.js", "lib/jquery-ui/jquery-ui.min.js", "lib/bootstrap/js/bootstrap.min.js", "javascripts/main.min.js"))
   )
 
 Concat.parentDir := "javascripts/"
@@ -46,7 +44,7 @@ UglifyKeys.mangle in Assets := true
 
 UglifyKeys.sourceMap in Assets := false
 
-//includeFilter in uglify := GlobFilter("jsgrup.js")
+includeFilter in uglify := GlobFilter("main.js")
 
 includeFilter in (Assets,LessKeys.less) := "main.less"
 

@@ -1,0 +1,9 @@
+# Routes
+
+# Home page
+GET     /                           controllers.Application.home(langVar: String = "en",pageName: String = "home")
+GET     /:langVar                   controllers.Application.home(langVar: String,pageName: String = "home")
+GET     /:langVar/:pageName         controllers.Application.home(langVar: String,pageName: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,0 +1,76 @@
+.toggleColorTop {
+	background-color: transparent ;
+        &:hover {
+                background-color: rgba(255,255,255,0.05) ;
+        }
+}
+
+.toggleColorNop {
+	background-color: #EB3349 ;
+        &:hover {
+                background-color: #EB3349 ;
+        }
+}
+
+.menuBar {
+	.poiret-font();
+	.navbar();
+	.navbar-default();
+	.navbar-fixed-top();
+	-web-kit-transition: background-color 1s ease, margin-left 0.4s ease;
+	-moz-transition: background-color 1s ease, margin-left 0.4s ease;
+	-o-transition: background-color 1s ease, margin-left 0.4s ease;
+	transition: background-color 1s ease, margin-left 0.4s ease;
+	button { float: left; margin-left: 10px}
+	.navbar-header {
+		button {
+			color: #fff;
+			border: 1px solid #fff;
+		}
+	}
+	@media (max-width: @screen-xs-max) { 
+		font-size: 12px;
+	}
+	@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { 
+		font-size: 15px;
+	}
+	@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {  
+		font-size: 15px;
+	}
+	@media (min-width: @screen-lg-min) {
+		font-size: 20px;
+	}
+	.navbar-default {
+		li {
+			a {
+				color: #fff;
+				font-weight: 100;
+				&:hover,&:focus,&:active {
+					color: #ffa526;
+					background-color: transparent; 
+				}
+			}
+			color: #fff;
+		}
+	}
+	.nav {
+		> li {
+			> a {
+				display: inline-block;
+				.langOpt {
+					padding-left:0;
+					padding-right:0;
+				}
+			}
+			.liSpacer {
+				padding-left:2em;
+				padding-right:2em;
+			}
+			.liPull {
+				margin-left:-0.7em;
+				margin-right:-0.7em;
+			}
+		}
+	}
+}
+

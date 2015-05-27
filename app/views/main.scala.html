@@ -1,0 +1,70 @@
+@(languages: List[Language])(menu: Html)(frontTitle: String)(frontSubtitle: String)(content: Html)(implicit lang: Lang)
+@import play.api.Play.current 
+
+<!DOCTYPE html>
+
+ <html lang="@languages(0).lang_id">
+    <head>
+	    <meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0,initial-scale = 1.0,maximum-scale = 1.0" />
+	    <meta name="theme-color" content="#F45C43">
+		<meta name="description" content="Irving Elyasib Santiago - Software &amp; Engineering Consultant"/>
+        <title>@frontTitle</title>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.min.css")">
+        <link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.versioned("images/favicon.ico")">
+    </head>
+    <body>
+	<div id="pageWrapper" class="pageWrapper">
+		<div class="sideBarWrapper" id="sideBarWrapper">
+			@contact()
+		</div>
+		<div id="contentWrapper" class="contentWrapper">
+			<div id="menuBar" class="menuBar toggleColorTop" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collMenuBar">
+							MENU
+					 	</button>
+					</div>
+					<div class="collapse navbar-collapse" id="collMenuBar"> 
+						<ul class="nav navbar-nav navbar-left">
+							@menu
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="screenBlock sbox" id="box0">
+				<div class="title"><h1>@frontTitle</h1></div>
+				<div class="subtitle"><h2>@frontSubtitle</h2></div>
+				<div class="arrowBox" id="arrow">
+					<a>
+						<span class="icon-arrowDown"></span>
+					</a>
+				</div>
+			</div>
+				@content
+		</div>
+	</div>
+    <script type='text/javascript' src="@routes.Assets.versioned("javascripts/jsgrup.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.versioned("javascripts/jsgrup.js")"></script>
+	<script>
+		$(document).ready(function() {
+			$(window).discrete_scroll();
+			toggleSideBar("#contactBtn","#contact","#signIn");
+			//toggleSideBar("#signInBtn","#signIn","#contact");
+			scrollToAnch1($("#arrow"));
+			closeSideBar("#sidebarClose","#contact","#logIn");
+			//formBehavior();
+		});
+	</script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-56504515-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+    </body>
+</html>
+

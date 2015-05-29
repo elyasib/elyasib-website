@@ -21,17 +21,13 @@
 
 
 @*Call to page Skeleton*@
-@main(currntLang)(menu)(title)(subtitle){
+@skeletonText(currntLang)(menu)(title)(subtitle){
 	@for((c,d) <- content.zipWithIndex) {
 		<div class="screenBlockw sbox" id="box@{d+1}">
-			<div class="@c.cblock_bgimg" id="innbox@{d+1}">
+			<div id="bgConfig innbox@{d+1}">
 			</div>
-			<div class="previewBlock@{if(d == 0) "" else "2"}">
-				<section class="previewTitle@{if(d == 0) "" else "W"}"><h3><a href="@c.cblock_link">@c.cblock_title</a></h3></section>
-				<section class="previewAbstract"><h4>@c.cblock_content</h4></section>
-			</div>
-			<div class="sib">
-			</div>
+				<section class="textTitle"><h3>@c.cblock_title</h3></section>
+				<section class="textContent"><h4>@Html(c.cblock_content)</h4></section>
 		</div>
 	}
 }{
@@ -45,4 +41,4 @@
 			collapseMenuBar("#menuBar","#collMenuBar");
 		});
 	</script>
-}
+}(content(0).cblock_bgimg)

@@ -1,9 +1,9 @@
-@(languages: List[Language])(menu: Html)(frontTitle: String)(frontSubtitle: String)(content: Html)(initScript: Html)
+@(menu: Html)(contextImg: Html)(frontTitle: String)(frontSubtitle: String)(content: Html)(implicit lang: Lang)
 @import play.api.Play.current 
 
 <!DOCTYPE html>
 
- <html lang="@languages(0).lang_id">
+ <html lang="en">
     <head>
 	    <meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0,initial-scale = 1.0,maximum-scale = 1.0" />
@@ -34,9 +34,9 @@
 				</div>
 			</div>
 			<div class="screenBlock sbox" id="box0">
-				<div class="title"><h1>@frontTitle</h1></div>
+				<div class="frontImg"><h1>@contextImg</h1></div>
+				<div class="subtitle"><h1>@frontTitle</h1></div>
 				<div class="subtitle"><h2>@frontSubtitle</h2></div>
-				<div class="arrowBox" id="arrow">
 					<a>
 						<span class="icon-arrowDown"></span>
 					</a>
@@ -45,8 +45,14 @@
 				@content
 		</div>
 	</div>
-    <script type='text/javascript' src="@routes.Assets.versioned("javascripts/jsmain.min.js")"></script>
-	@initScript
+    <script type='text/javascript' src="@routes.Assets.versioned("lib/jquery/jquery.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.min.js")"></script>
+	<script>
+		$(document).ready(function() {
+			closeSideBar("#sidebarClose","#contact","#logIn");
+			collapseMenuBar("#menuBar","#collMenuBar");
+		});
+	</script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

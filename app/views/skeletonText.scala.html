@@ -1,4 +1,4 @@
-@(languages: List[Language])(menu: Html)(frontTitle: String)(frontSubtitle: String)(content: Html)(initScript: Html)
+@(languages: List[Language])(menu: Html)(frontTitle: String)(frontSubtitle: String)(content: Html)(initScript: Html)(frontBg: String)
 @import play.api.Play.current 
 
 <!DOCTYPE html>
@@ -33,14 +33,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="screenBlock sbox" id="box0">
+			<div class="screenBlock sbox @frontBg" id="box0">
 				<div class="title"><h1>@frontTitle</h1></div>
 				<div class="subtitle"><h2>@frontSubtitle</h2></div>
-				<div class="arrowBox" id="arrow">
-					<a>
-						<span class="icon-arrowDown"></span>
-					</a>
-				</div>
 			</div>
 				@content
 		</div>

@@ -18,7 +18,6 @@ $(document).ready(function() {
 	var $htmlBody=$("html,body");
 	var $Box1=$(document.getElementById("box1"));
 	var $innBox1=$(document.getElementById("innbox1"));
-	console.log(currBox);
 
 	function switchClass(targetId,class1,class2) {
 		targetId.removeClass(class2);
@@ -43,6 +42,7 @@ $(document).ready(function() {
 			this.$container = $container;	
 		}
 		DiscreteScroll.prototype.scrollToBox = function() {
+	console.log(currBox);
 			var $currBox=$(document.getElementById("box"+currBox.toString()));
 			console.log("started");
 			var $currinnBox=$(document.getElementById("innbox"+currBox.toString()));

@@ -1,0 +1,24 @@
+@(langVar: String, uri: String, referer: String)
+
+
+@*Call to page Skeleton*@
+@langVar match  {
+	case "es" => {
+	@mNotFound{
+		@if(referer contains "elyasibsantiago.com"){
+				<li><a href="@referer">Regresar</a></li>
+			}else {
+				<li><a href="http://www.elyasibsantiago.com/es" id="">Regresar</a></li>
+			}
+		}{<img src="@routes.Assets.versioned("images/404.svg")"></img>}("No hay nada que ver por aquí.")("404: La página que estás buscando (" + uri + ") ya no existe o ha sido movida."){ }
+	}
+	case _ => {
+	@mNotFound{
+		@if(referer contains "elyasibsantiago.com"){
+				<li><a href="@referer">Go back</a></li>
+			}else{
+			<li><a href="http://www.elyasibsantiago.com">Go back</a></li>
+			}
+		}{<img src="@routes.Assets.versioned("images/404.svg")"></img>}("Nothing to see here.")("404: The page you are looking for (" + uri + ") no longer exists or has been moved."){ }
+	}
+}

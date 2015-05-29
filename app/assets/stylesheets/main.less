@@ -28,25 +28,11 @@
 @import "lib/bootstrap/less/utilities.less";
 //@import "lib/bootstrap/less/responsive-utilities.less";
 
+@import "stylesheets/basicConfig.less";
 @import "stylesheets/fonts.less";
 @import "stylesheets/glyphiconStyle.less";
+@import "stylesheets/menuBar.less";
 @import "stylesheets/sideBar.less";
-//@import "stylesheets/menuBar.less";
-
-body {
-	@media (max-width: @screen-xs-max) { 
-		font-size: 5.8px;
-	}
-	@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { 
-		font-size: 7.5px;
-	}
-	@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {  
-		font-size: 8.5px;
-	}
-	@media (min-width: @screen-lg-min) { 
-		font-size: 10px;
-	}
-}
 
 .underlined {
 	border-bottom: 1px solid white;
@@ -82,7 +68,7 @@ h5 {
 	position: relative;
 	height: 100vh;
 	width: 100vw;
-	#gradient > .directional(#EB3349;#F45C43;45deg);
+	#gradient > .directional(@themeColor1;@themeColor2;45deg);
     padding-left: 0px;
 }
 
@@ -135,11 +121,19 @@ h5 {
 }
 
 .about-img {
-	background: url('../images/desk2.jpg') no-repeat;
+	background: url('../images/sky.jpg') no-repeat;
 	@media (max-width: @screen-xs-max) { 
 		background-position: 50%;
 	}
 	.bgConfig();
+}
+
+.about-img2 {
+	background: url('../images/iesc.jpg') no-repeat;
+	@media (max-width: @screen-xs-max) { 
+		background-position: 30%;
+	}
+	background-size: cover;
 }
 
 .portf-img {
@@ -176,7 +170,7 @@ h5 {
 
 .prevTitleConstruct(@baseColor,@activeColor) {
     padding-bottom: 1em;
-	.lobster-font();
+	.oswald-font();
 	text-align:center;
 	h3 {
 		@media (max-width: @screen-sm-max) { 
@@ -200,7 +194,7 @@ h5 {
 			}
 			&:active {
 				text-decoration: none;
-				color: #EB3349;
+				color: @themeColor1;
 			}
 		}
 	}
@@ -280,47 +274,66 @@ h5 {
 	.prevBlockConstruct(rgba(0,0,0,0.0),rgba(0,0,0,0.8),#ffffff,previewTitleW,previewAbstract);
 }
 
+.frontImg {
+	padding-top: 10vh;
+	.text-center();
+	img {
+		height: 30%; 
+		width: 30%;
+	}
+}
+
 .title {
 	padding-top: 35vh;
 	.text-center();
-	.lobster-font();
-	color: #ffa526; 
+	color: @themeColor3; 
+	.montserrat-font();
 }
 
 .subtitle {
 	.text-center();
-	.amatic-font();
 	color: #ffffff;
 	font-weight:400;
+	.oswald-font();
+}
+
+.textTitle {
+	.oswald-font();
+	padding-top: 10vh;
+	padding-left: 5vw;
+	padding-right: 5vw;
+}
+
+.textContent {
+	.roboto-font();
+	padding-left: 5vw;
+	padding-right: 5vw;
 }
 
 .arrowBox {
 	padding-top: 20vh; 
-	//.arrowDown {
-		.text-center();
-		
-		
-		@media (max-width: @screen-xs-max) { 
-			font-size: 35px;
-		}
-		@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { 
-			font-size: 45px;
-		}
-		@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {  
-			font-size: 50px;
-		}
-		@media (min-width: @screen-lg-min) { 
-			font-size: 60px;
-		}
-		a {
+	.text-center();
+	@media (max-width: @screen-xs-max) { 
+		font-size: 35px;
+		padding-top: 10vh; 
+	}
+	@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { 
+		font-size: 45px;
+	}
+	@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {  
+		font-size: 50px;
+	}
+	@media (min-width: @screen-lg-min) { 
+		font-size: 60px;
+	}
+	a {
+		color: white;
+		text-shadow: 5px 5px 9px #000;
+		&:hover,&:focus {
 			color: white;
-			text-shadow: 5px 5px 9px #000;
-			&:hover,&:focus {
-				color: white;
-				text-decoration: none;
-				text-shadow: 2px 2px 5px #000;
-			}
+			text-decoration: none;
+			text-shadow: 2px 2px 5px #000;
 		}
-	//}
+	}
 }
 

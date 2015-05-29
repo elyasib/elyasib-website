@@ -1,19 +1,7 @@
-.toggleColorTop {
-	background-color: transparent ;
-        &:hover {
-                background-color: rgba(255,255,255,0.05) ;
-        }
-}
-
-.toggleColorNop {
-	background-color: #EB3349 ;
-        &:hover {
-                background-color: #EB3349 ;
-        }
-}
-
 .menuBar {
-	.poiret-font();
+	.openSans-font();
+	font-weight: 700;
+	-webkit-font-smoothing: antialiased;
 	.navbar();
 	.navbar-default();
 	.navbar-fixed-top();
@@ -28,26 +16,35 @@
 			border: 1px solid #fff;
 		}
 	}
+	&:active  {
+		background-color: @themeColor2;
+	}
 	@media (max-width: @screen-xs-max) { 
-		font-size: 12px;
+		font-size: 3.4em;
 	}
 	@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { 
-		font-size: 15px;
+		font-size: 3.3em;
 	}
 	@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {  
-		font-size: 15px;
+		font-size: 2.5em;
 	}
 	@media (min-width: @screen-lg-min) {
-		font-size: 20px;
+		font-size: 2.5em;
 	}
 	.navbar-default {
 		li {
 			a {
 				color: #fff;
 				font-weight: 100;
-				&:hover,&:focus,&:active {
-					color: #ffa526;
+				&:hover, &:focus, &:active {
+					color: @themeColor3;
 					background-color: transparent; 
+				}
+				.underlined {
+					border-bottom: 1px solid white;
+					&:hover, &:focus, &:active {
+						border-color: @themeColor3;
+					}
 				}
 			}
 			color: #fff;
@@ -71,6 +68,18 @@
 				margin-right:-0.7em;
 			}
 		}
+	}
+	&.toggleColorNop {
+		background-color: @themeColor1;
+        &:hover {
+                background-color: @themeColor1;
+        }
+	}
+	&.toggleColorTop {
+		background-color: transparent ;
+        &:hover {
+                background-color: @themeColor1;
+        }
 	}
 }
 

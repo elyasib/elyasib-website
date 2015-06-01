@@ -3,13 +3,12 @@
 @import scala.List._
 @import List._
 
-	@*Top Menu Items*@
+@*Top Menu Items*@
 @menu = {
 	@for(menuItem <- topMenu) {
 		<li><a href=".@menuItem.tmitem_link" id="">@menuItem.tmitem_name</a></li>
 	}
 	<li><a class="contactBtn" id="contactBtn">Contact</a></li>
-
 	<li><span class="liSpacer"> </span></li>
 	<li><a href="../@currntLang(0).lang_id" id=""><span class="underlined">@currntLang(0).lang_desc</span></a>
 	@for(language <- otherLangs) {
@@ -26,14 +25,14 @@
 		<div class="screenBlockw sbox" id="box@{d+1}">
 			<div id="bgConfig innbox@{d+1}">
 			</div>
-				<section class="textTitle"><h3>@c.cblock_title</h3></section>
-				<section class="textContent"><h4>@Html(c.cblock_content)</h4></section>
+			<section class="textTitle"><h3>@c.cblock_title</h3></section>
+			<section class="textContent"><h4>@Html(c.cblock_content)</h4></section>
 		</div>
 	}
 }{
 	<script>
 		$(document).ready(function() {
-			$(window).discrete_scroll();
+			$(window).discrete_scroll("disable",@content.length);
 			toggleSideBar("#contactBtn","#contact","#signIn");
 			scrollToAnch1($("#arrow"));
 			closeSideBar("#sidebarClose","#contact","#logIn");

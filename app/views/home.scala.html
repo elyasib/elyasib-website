@@ -37,7 +37,7 @@
 }{
 	<script>
 		$(document).ready(function() {
-			$(window).discrete_scroll();
+			$(window).discrete_scroll("disable",@content.length);
 			toggleSideBar("#contactBtn","#contact","#signIn");
 			scrollToAnch1($("#arrow"));
 			closeSideBar("#sidebarClose","#contact","#logIn");

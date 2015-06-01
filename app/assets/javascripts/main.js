@@ -38,13 +38,14 @@ $(document).ready(function() {
 		var instance;
 		var swipeDeltaY0 = 0;
 		var swipeDeltaY1 = 0;
-		function DiscreteScroll($container) {
+		var maxBlock_ = 0;
+		function DiscreteScroll($container,maxBlock) {
 			this.$container = $container;	
+			maxBlock_ = maxBlock; 
 		}
 		DiscreteScroll.prototype.scrollToBox = function() {
-	console.log(currBox);
+			console.log(currBox);
 			var $currBox=$(document.getElementById("box"+currBox.toString()));
-			console.log("started");
 			var $currinnBox=$(document.getElementById("innbox"+currBox.toString()));
 			var $previnnBox=$(document.getElementById("innbox"+lastBox.toString()));
 			$htmlBody.animate({scrollTop: $currBox.offset().top},800,'easeInOutQuart',function() {
@@ -94,7 +95,7 @@ $(document).ready(function() {
 					}
 				}
 				else {  //scrolling downward
-					if (currBox < 3) { //here should go the total number of preview blocks
+					if (currBox < maxBlock_) { //here should go the total number of preview blocks
 						lastBox = currBox;
 						currBox++;
 						//"will-change" commented out provisionally, instead instance.scrollToBox() is called directly
@@ -115,16 +116,12 @@ $(document).ready(function() {
 		DiscreteScroll.prototype.disable = function() {
 			this.$container.off(".discretescroll");
 		};
-		$.fn.discrete_scroll = function(option) {
+		$.fn.discrete_scroll = function(option,maxBlock) {
 			if (!instance) {
-				console.log("creando instancia");
-				instance = new DiscreteScroll(this);
-				console.log("instancia creada");
+				instance = new DiscreteScroll(this,maxBlock);
 			}
-			if (instance && typeof option === "undefined") {
-				console.log("habilitando custom scroll");
+			if (instance && option === "disable") {
 				instance.enable();
-				console.log("custom scroll habilitado");
 			}
 			if (instance && option === "enable") {
 				instance.disable();
@@ -178,7 +175,6 @@ $(document).ready(function() {
 			}
 		});
 	};
-	
 	
 	collapseMenuBar = function(menuBarWrapper,listWrapper) {
 		var $listWrapper = $(listWrapper);
